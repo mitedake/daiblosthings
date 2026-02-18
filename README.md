@@ -29,13 +29,18 @@ For each specified base name (e.g., `cfgCardData`):
    - `output/{base}_{YYYYMMDD}.csv` (comma-separated)
    - `output/{base}_{YYYYMMDD}.txt` (tab-separated)
 
-### Examples
+### Usage Example
 
-- Process a single file:
+- Parse a single file:
   ```
   python lua2csv.py -file cfgCardData
   ```
 
-- Process multiple files:
+- Parse multiple files:
   ```
   python lua2csv.py -file cfgCardData cfgCfgSkillDesc
+  ```
+
+- Parse all files based on format folder:
+  ```
+  python lua2csv.py

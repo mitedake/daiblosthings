@@ -9,6 +9,7 @@ import argparse
 import datetime
 import os
 import sys
+import glob
 
 def process_lua_to_csv(input_file, output_file, header_file):
     # Read the header from the CSV file
@@ -108,6 +109,11 @@ if __name__ == '__main__':
             output_file = os.path.join('output', f'{base}_{date_str}.csv')
             process_lua_to_csv(input_file, output_file, header_file)
     else:
-        # Require -file argument
-        print("Error: Please specify a file using the -file argument.")
-        sys.exit(1)
+        files = glob.glob(os.path.join('format', '*.csv'))
+        bases = [os.path.splitext(os.path.basename(f))[0] for f in files]
+        for base in bases:
+            input_file = os.path.join('lua', f'{base}.lua.txt')
+            header_file = os.path.join('format', f'{base}.csv')
+            date_str = datetime.datetime.now().strftime('%Y%m%d')
+            output_file = os.path.join('output', f'{base}_{date_str}.csv')
+            process_lua_to_csv(input_file, output_file, header_file)
