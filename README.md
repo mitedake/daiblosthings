@@ -31,16 +31,11 @@ For each specified base name (e.g., `cfgCardData`):
 
 ### Usage Example
 
-- Parse a single file:
+- Parse specific file (separated by space for multiple files):
   ```
   python lua2csv.py -file cfgCardData
   ```
 
-- Parse multiple files:
-  ```
-  python lua2csv.py -file cfgCardData cfgCfgSkillDesc
-  ```
-
-- Parse all files based on format folder:
+- Parse all files (based on existing csv files in format folder):
   ```
   python lua2csv.py
