@@ -1,4 +1,5 @@
 backup/
 .vscode/
+__pycache__/
 output/*.*
 lua/*.*
