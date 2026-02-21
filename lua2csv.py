@@ -9,6 +9,13 @@ import datetime
 import os
 import glob
 
+def clean_string(s):
+    if isinstance(s, str):
+        s = re.sub(r'<color=#[0-9A-Fa-f]{6}>', '', s)
+        s = s.replace('</color>', '')
+        return s
+    return s
+
 def process_lua_to_csv(input_file, output_file, header_file):
     # Read the header from the CSV file
     with open(header_file, 'r', encoding='utf-8') as f:
@@ -62,6 +69,7 @@ def process_lua_to_csv(input_file, output_file, header_file):
         if isinstance(val, bool):
             return 'true' if val else 'false'
         elif isinstance(val, str):
+            val = clean_string(val)
             return val.replace('"', '""')
         elif isinstance(val, Mapping):
             return json.dumps(val, ensure_ascii=False)
@@ -88,6 +96,9 @@ def process_lua_to_csv(input_file, output_file, header_file):
             v = entry.get(col, '')
             row.append(flatten_value(v))
         rows.append(row)
+
+    # Sort rows by id (first column)
+    rows.sort(key=lambda x: int(x[0]) if x[0].isdigit() else 0)
 
     with open(output_file, 'w', encoding='utf-8', newline='') as f:
         writer = csv.writer(f)
@@ -149,14 +160,17 @@ def process_nested_lua_to_csv(input_file, output_file):
 
     rows = []
     for entry in table_data.values():
-        parent_id = entry.get('id', '')
+        parent_id = clean_string(entry.get('id', ''))
         ids_array = entry.get('ids', [])
         
         # Iterate through each skill in the ids array
         for skill in ids_array:
-            skill_index = skill.get('index', '')
-            skill_id = skill.get('id', '')
+            skill_index = clean_string(skill.get('index', ''))
+            skill_id = clean_string(skill.get('id', ''))
             rows.append([parent_id, skill_index, skill_id])
+
+    # Sort rows by id (first column)
+    rows.sort(key=lambda x: int(x[0]) if x[0].isdigit() else 0)
 
     with open(output_file, 'w', encoding='utf-8', newline='') as f:
         writer = csv.writer(f)
