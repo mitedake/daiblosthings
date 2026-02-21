@@ -2,13 +2,11 @@ import re
 import json
 import csv
 from slpp import slpp as lua
-import unicodedata
 import string
 from collections.abc import Mapping, Sequence
 import argparse
 import datetime
 import os
-import sys
 import glob
 
 def process_lua_to_csv(input_file, output_file, header_file):
