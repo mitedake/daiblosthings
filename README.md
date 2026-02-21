@@ -1,18 +1,20 @@
 # lua2csv.py
 
-A Python script to convert Lua table files to CSV and tab-separated TXT formats.
+convert luas to readable format in csv or tsv
+
+all files aside from halo and cfgskill use lua2csv.py
+
+halo and cfgskill need specific script
 
 ## Installation
 
-1. Ensure Python 3.x is installed.
+1. Install python 3.x
 2. Install the required module:
    ```
    pip install slpp
    ```
 
 ### Folder Structure
-
-The script expects the following folder structure in the working directory:
 
 - `lua/`: Contains the input Lua files (e.g., `cfgCardData.lua.txt`)
 - `format/`: Contains the header CSV files (e.g., `cfgCardData.csv`)
@@ -25,17 +27,21 @@ For each specified base name (e.g., `cfgCardData`):
 1. Reads the Lua table from `lua/{base}.lua.txt`
 2. Reads the headers from `format/{base}.csv`
 3. Parses and flattens the Lua data
-4. Outputs:
-   - `output/{base}_{YYYYMMDD}.csv` (comma-separated)
-   - `output/{base}_{YYYYMMDD}.txt` (tab-separated)
 
-### Usage Example
+### Usages
 
-- Parse specific file (separated by space for multiple files):
+- Parse specific lua (separated by space for multiple files):
   ```
   python lua2csv.py -file cfgCardData
   ```
 
-- Parse all files (based on existing csv files in format folder):
+- Parse all luas excluding halo and cfgskill:
   ```
   python lua2csv.py
+  ```
+
+- Other luas:
+  ```
+  python lua2csv_halo.py
+  python lua2csv_cfgskill.py
+  ```
