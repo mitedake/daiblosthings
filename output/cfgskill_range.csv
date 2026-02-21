@@ -1,0 +1,14 @@
+id,key,skill_icon
+1,one,effective_range_01
+2,one_row,effective_range_02
+3,one_col,effective_range_05
+4,all,effective_range_04
+5,tian,effective_range_06
+6,shizi,effective_range_03
+7,summon_area,effective_range_07
+8,one_except_self,effective_range_01
+9,myself,effective_range_01
+10,shizi1,effective_range_03
+11,two_row,effective_range_10
+12,two_col,effective_range_11
+13,all1,effective_range_04
