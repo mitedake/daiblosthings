@@ -35,13 +35,9 @@ For each specified base name (e.g., `cfgCardData`):
   python lua2csv.py -file cfgCardData
   ```
 
-- Parse all luas excluding halo and cfgskill:
+- Parse all luas:
   ```
   python lua2csv.py
-  ```
-
-- Other luas:
-  ```
   python lua2csv_halo.py
   python lua2csv_cfgskill.py
   ```

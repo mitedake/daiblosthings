@@ -1,161 +1,161 @@
-id	effect1	percent1	effect2	percent2
-1	maxhp	0.07	attack	0.07
-10230	defense	0.07	attack	0.07
-60060	maxhp	0.07	attack	0.07
-70410	crit_rate	0.06	maxhp	0.07
-10240	maxhp	0.07	attack	0.07
-40210	crit	0.1	defense	0.07
-90380	maxhp	0.07	attack	0.07
-10250	maxhp	0.07	attack	0.07
-60140	crit	0.1	defense	0.07
-90460	maxhp	0.05	attack	0.05
-10260	maxhp	0.07	attack	0.07
-30150	defense	0.07	attack	0.07
-40290	defense	0.07	attack	0.07
-90030	maxhp	0.05	attack	0.05
-40330	speed	4	maxhp	0.07
-70220	crit_rate	0.06	defense	0.07
-50060	resist	0.1	attack	0.07
-20010	speed	4	maxhp	0.07
-50100	defense	0.07	attack	0.07
-90270	maxhp	0.05	attack	0.05
-30230	crit	0.1	defense	0.07
-50140	speed	4	crit	0.1
-90350	maxhp	0.05	attack	0.05
-30250	crit	0.1	maxhp	0.07
-50180	speed	4	defense	0.07
-70030	crit	0.1	maxhp	0.07
-20070	maxhp	0.07	attack	0.07
-40020	speed	4	maxhp	0.07
-70110	speed	4	defense	0.07
-20090	maxhp	0.07	attack	0.07
-50260	maxhp	0.07	attack	0.07
-30310	resist	0.1	attack	0.07
-50300	maxhp	0.07	attack	0.07
-60030	crit	0.1	maxhp	0.07
-70350	maxhp	0.07	attack	0.07
-20150	hit	0.1	maxhp	0.07
-60070	defense	0.07	attack	0.07
-70430	crit_rate	0.06	maxhp	0.07
-40220	hit	0.1	attack	0.07
-71020	crit_rate	0.06	defense	0.07
-60150	maxhp	0.07	attack	0.07
-60190	resist	0.1	attack	0.07
-30430	crit_rate	0.06	defense	0.07
-50030	resist	0.1	attack	0.07
-70240	speed	4	maxhp	0.07
-60310	resist	0.1	attack	0.07
-70400	resist	0.1	attack	0.07
-30490	crit_rate	0.06	defense	0.07
-60350	resist	0.1	attack	0.07
-90370	maxhp	0.07	attack	0.07
-50190	maxhp	0.07	attack	0.07
-70050	maxhp	0.07	attack	0.07
-30020	crit_rate	0.06	defense	0.07
-40030	hit	0.1	defense	0.07
-70130	resist	0.1	attack	0.07
-30040	crit_rate	0.06	defense	0.07
-40070	crit	0.1	defense	0.07
-50310	maxhp	0.07	attack	0.07
-70290	resist	0.1	attack	0.07
-30080	defense	0.07	attack	0.07
-40150	hit	0.1	attack	0.07
-90260	maxhp	0.05	attack	0.05
-30100	defense	0.07	attack	0.07
-60080	maxhp	0.07	attack	0.07
-70450	maxhp	0.07	attack	0.07
-30120	speed	4	maxhp	0.07
-40230	hit	0.1	attack	0.07
-90420	maxhp	0.05	attack	0.05
-60160	crit	0.1	defense	0.07
-10010	resist	0.1	maxhp	0.07
-40310	crit	0.1	defense	0.07
-10020	defense	0.07	attack	0.07
-30180	resist	0.1	attack	0.07
-40350	crit_rate	0.06	maxhp	0.07
-70260	crit_rate	0.06	defense	0.07
-10030	defense	0.07	attack	0.07
-30200	maxhp	0.07	attack	0.07
-40390	crit_rate	0.06	maxhp	0.07
-70340	maxhp	0.07	attack	0.07
-10040	defense	0.07	attack	0.07
-20020	speed	4	hit	0.1
-60320	maxhp	0.07	attack	0.07
-70420	crit_rate	0.06	maxhp	0.07
-20040	speed	4	maxhp	0.07
-71010	crit_rate	0.06	defense	0.07
-30260	hit	0.1	attack	0.07
-70070	maxhp	0.07	attack	0.07
-20080	resist	0.1	attack	0.07
-40040	hit	0.1	attack	0.07
-90040	maxhp	0.05	attack	0.05
-30320	resist	0.1	attack	0.07
-60010	crit	0.1	defense	0.07
-70310	crit_rate	0.06	defense	0.07
-90450	maxhp	0.05	attack	0.05
-90310	maxhp	0.05	attack	0.05
-20140	resist	0.1	attack	0.07
-60050	crit	0.1	maxhp	0.07
-90280	maxhp	0.05	attack	0.05
-90430	maxhp	0.05	attack	0.05
-10110	resist	0.1	attack	0.07
-90410	maxhp	0.05	attack	0.05
-40200	hit	0.1	maxhp	0.07
-90360	maxhp	0.05	attack	0.05
-90340	maxhp	0.05	attack	0.05
-10120	resist	0.1	attack	0.07
-90330	maxhp	0.05	attack	0.05
-90320	maxhp	0.05	attack	0.05
-90440	maxhp	0.05	attack	0.05
-90300	maxhp	0.05	attack	0.05
-90290	maxhp	0.05	attack	0.05
-30400	hit	0.1	maxhp	0.07
-90250	maxhp	0.07	attack	0.07
-90010	maxhp	0.05	attack	0.05
-90020	maxhp	0.05	attack	0.05
-78010	resist	0.1	attack	0.07
-30420	crit_rate	0.06	defense	0.07
-40320	speed	4	maxhp	0.07
-75020	maxhp	0.07	attack	0.07
-75010	crit_rate	0.06	defense	0.07
-20230	speed	4	maxhp	0.07
-30440	crit_rate	0.06	defense	0.07
-50250	maxhp	0.07	attack	0.07
-70280	hit	0.1	defense	0.07
-60090	maxhp	0.07	attack	0.07
-30220	crit	0.1	defense	0.07
-20110	maxhp	0.07	attack	0.07
-40400	speed	4	maxhp	0.07
-70360	crit_rate	0.06	maxhp	0.07
-50020	maxhp	0.07	attack	0.07
-50040	resist	0.1	attack	0.07
-30480	crit_rate	0.06	defense	0.07
-50130	hit	0.1	maxhp	0.07
-70440	hit	0.1	defense	0.07
-50080	speed	4	maxhp	0.07
-10180	defense	0.07	attack	0.07
-30500	crit_rate	0.06	defense	0.07
-40190	speed	4	resist	0.1
-70010	hit	0.1	attack	0.07
-60280	resist	0.1	attack	0.07
-10190	maxhp	0.07	attack	0.07
-30010	hit	0.1	attack	0.07
-40010	speed	4	maxhp	0.07
-70090	defense	0.07	attack	0.07
-20120	maxhp	0.07	attack	0.07
-40120	hit	0.1	defense	0.07
-40060	crit	0.1	defense	0.07
-40050	crit	0.1	defense	0.07
-50010	crit	0.1	maxhp	0.07
-60300	resist	0.1	attack	0.07
-10210	maxhp	0.07	attack	0.07
-30050	crit_rate	0.06	defense	0.07
-40140	crit_rate	0.06	defense	0.07
-60210	resist	0.1	attack	0.07
-60110	speed	4	hit	0.1
-10220	defense	0.07	attack	0.07
-50320	maxhp	0.07	attack	0.07
-60020	hit	0.1	maxhp	0.07
-70330	crit_rate	0.06	defense	0.07
-20240	speed	4	maxhp	0.07
-30270	crit_rate	0.06	maxhp	0.07
+id	percents1	percents2	percents3	percents4
+1				
+10010				
+10020				
+10030				
+10040				
+10110				
+10120				
+10180				
+10190				
+10210				
+10220				
+10230				
+10240				
+10250				
+10260				
+20010				
+20020				
+20040				
+20070				
+20080				
+20090				
+20110				
+20120				
+20140				
+20150				
+20230				
+20240				
+30010				
+30020				
+30040				
+30050				
+30080				
+30100				
+30120				
+30150				
+30180				
+30200				
+30220				
+30230				
+30250				
+30260				
+30270				
+30310				
+30320				
+30400				
+30420				
+30430				
+30440				
+30480				
+30490				
+30500				
+40010				
+40020				
+40030				
+40040				
+40050				
+40060				
+40070				
+40120				
+40140				
+40150				
+40190				
+40200				
+40210				
+40220				
+40230				
+40290				
+40310				
+40320				
+40330				
+40350				
+40390				
+40400				
+50010				
+50020				
+50030				
+50040				
+50060				
+50080				
+50100				
+50130				
+50140				
+50180				
+50190				
+50250				
+50260				
+50300				
+50310				
+50320				
+60010				
+60020				
+60030				
+60050				
+60060				
+60070				
+60080				
+60090				
+60110				
+60140				
+60150				
+60160				
+60190				
+60210				
+60280				
+60300				
+60310				
+60320				
+60350				
+70010				
+70030				
+70050				
+70070				
+70090				
+70110				
+70130				
+70220				
+70240				
+70260				
+70280				
+70290				
+70310				
+70330				
+70340				
+70350				
+70360				
+70400				
+70410				
+70420				
+70430				
+70440				
+70450				
+71010				
+71020				
+75010				
+75020				
+78010				
+90010				
+90020				
+90030				
+90040				
+90250				
+90260				
+90270				
+90280				
+90290				
+90300				
+90310				
+90320				
+90330				
+90340				
+90350				
+90360				
+90370				
+90380				
+90410				
+90420				
+90430				
+90440				
+90450				
+90460				

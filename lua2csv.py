@@ -170,7 +170,7 @@ def process_nested_lua_to_csv(input_file, output_file):
             rows.append([parent_id, skill_index, skill_id])
 
     # Sort rows by id (first column)
-    rows.sort(key=lambda x: int(x[0]) if x[0].isdigit() else 0)
+    rows.sort(key=lambda x: int(x[0]) if isinstance(x[0], int) or (isinstance(x[0], str) and x[0].isdigit()) else 0)
 
     with open(output_file, 'w', encoding='utf-8', newline='') as f:
         writer = csv.writer(f)

@@ -46,6 +46,8 @@ def extract_halo_data(input_file, output_file):
         f.write('\t'.join(['id', 'effect1', 'percent1', 'effect2', 'percent2']) + '\n')
         for row in rows:
             f.write('\t'.join(str(cell) for cell in row) + '\n')
+    
+    print(f'Wrote {len(rows)} skill entries to {output_file} and {txt_file}.')
 
 if __name__ == '__main__':
     extract_halo_data('lua/cfgcfgHalo.lua.txt', 'output/cfgcfgHalo.csv')

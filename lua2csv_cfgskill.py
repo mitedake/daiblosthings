@@ -244,6 +244,9 @@ def process_cfgskill_lua_to_csv(input_file, output_file, header_file):
         
         rows.append(row)
 
+    # Sort rows by id (first column) ascending
+    rows.sort(key=lambda x: int(x[0]) if isinstance(x[0], int) or (isinstance(x[0], str) and x[0].isdigit()) else 0)
+
     # Write CSV file
     with open(output_file, 'w', encoding='utf-8', newline='') as f:
         writer = csv.writer(f)
