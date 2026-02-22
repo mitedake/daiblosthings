@@ -1,4 +1,4 @@
-import re
+﻿import re
 import json
 import csv
 from slpp import slpp as lua
@@ -114,7 +114,17 @@ def process_lua_to_csv(input_file, output_file, header_file):
 
     print(f'Wrote {len(rows)} rows to {output_file} and {txt_file}.')
 
-def process_nested_lua_to_csv(input_file, output_file):
+def process_nested_array_lua_to_csv(input_file, output_file, headers, array_key, parent_fields, child_fields):
+    """
+    Generic flattener for Lua tables whose entries each contain a nested array.
+
+    headers       - output column names, e.g. ['id', 'index', 'skill_id']
+    array_key     - key of the nested list inside each entry, e.g. 'ids' or 'arr'
+    parent_fields - lua keys to pull from the parent entry (in order), e.g. ['id']
+    child_fields  - lua keys to pull from each child item (in order), e.g. ['index', 'id']
+
+    The combined length of parent_fields + child_fields must equal len(headers).
+    """
     # Read the Lua table from file
     with open(input_file, 'r', encoding='utf-8') as f:
         lua_data = f.read()
@@ -160,31 +170,33 @@ def process_nested_lua_to_csv(input_file, output_file):
 
     rows = []
     for entry in table_data.values():
-        parent_id = clean_string(entry.get('id', ''))
-        ids_array = entry.get('ids', [])
-        
-        # Iterate through each skill in the ids array
-        for skill in ids_array:
-            skill_index = clean_string(skill.get('index', ''))
-            skill_id = clean_string(skill.get('id', ''))
-            rows.append([parent_id, skill_index, skill_id])
+        if not isinstance(entry, dict):
+            continue
+        parent_vals = [clean_string(str(entry.get(f, ''))) for f in parent_fields]
+        arr = entry.get(array_key, [])
+        if isinstance(arr, dict):
+            arr = list(arr.values())
+        for item in arr:
+            if not isinstance(item, dict):
+                continue
+            child_vals = [clean_string(str(item.get(f, ''))) for f in child_fields]
+            rows.append(parent_vals + child_vals)
 
-    # Sort rows by id (first column)
-    rows.sort(key=lambda x: int(x[0]) if isinstance(x[0], int) or (isinstance(x[0], str) and x[0].isdigit()) else 0)
+    rows.sort(key=lambda x: int(x[0]) if x[0].lstrip('-').isdigit() else 0)
 
     with open(output_file, 'w', encoding='utf-8', newline='') as f:
         writer = csv.writer(f)
-        writer.writerow(['id', 'index', 'skill_id'])
+        writer.writerow(headers)
         writer.writerows(rows)
 
-    # Also output a tab-separated .txt file
     txt_file = output_file.replace('.csv', '.txt')
     with open(txt_file, 'w', encoding='utf-8', newline='') as f:
         writer = csv.writer(f, delimiter='\t')
-        writer.writerow(['id', 'index', 'skill_id'])
+        writer.writerow(headers)
         writer.writerows(rows)
 
     print(f'Wrote {len(rows)} rows to {output_file} and {txt_file}.')
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Convert Lua table files to CSV.')
@@ -195,27 +207,38 @@ if __name__ == '__main__':
     # date suffix only when requested
     date_str = f'_{datetime.datetime.now().strftime("%Y%m%d")}' if args.date else ''
 
+    # Bases that use the generic nested-array flattener.
+    # Each value: (array_key, parent_fields, child_fields, headers)
+    NESTED_CONFIGS = {
+        'cfgCfgSubTalentSkillPool':  ('ids', ['id'],        ['index', 'id'],              ['id', 'index', 'skill_id']),
+        'cfgCfgCardRoleAbilityPool': ('arr', ['id','icon'], ['index', 'remarks', 'desc'], ['id', 'icon','index', 'remarks', 'desc']),
+    }
+
     if args.file:
         for base in args.file:
             input_file = os.path.join('lua', f'{base}.lua.txt')
-            if base == 'cfgCfgSubTalentSkillPool':
-                output_file = os.path.join('output', f'{base}{date_str}.csv')
-                process_nested_lua_to_csv(input_file, output_file)
+            output_file = os.path.join('output', f'{base}{date_str}.csv')
+            if base in NESTED_CONFIGS:
+                array_key, parent_fields, child_fields, headers = NESTED_CONFIGS[base]
+                process_nested_array_lua_to_csv(input_file, output_file, headers, array_key, parent_fields, child_fields)
             else:
                 header_file = os.path.join('format', f'{base}.csv')
-                output_file = os.path.join('output', f'{base}{date_str}.csv')
                 process_lua_to_csv(input_file, output_file, header_file)
     else:
+        # Nested configs don't need a format CSV; add them explicitly
+        nested_bases = list(NESTED_CONFIGS.keys())
+        # Flat configs are discovered from format/*.csv (excluding cfgskill and nested bases)
         files = glob.glob(os.path.join('format', '*.csv'))
-        bases = [os.path.splitext(os.path.basename(f))[0] for f in files]
-        # exclude cfgskill from bulk processing
-        bases = [b for b in bases if b != 'cfgskill']
-        for base in bases:
+        flat_bases = [os.path.splitext(os.path.basename(f))[0] for f in files]
+        SKIP_BASES = {'cfgskill', 'cfgcfgHalo'}
+        flat_bases = [b for b in flat_bases if b not in SKIP_BASES and b not in NESTED_CONFIGS]
+        for base in nested_bases + flat_bases:
             input_file = os.path.join('lua', f'{base}.lua.txt')
-            if base == 'cfgCfgSubTalentSkillPool':
-                output_file = os.path.join('output', f'{base}{date_str}.csv')
-                process_nested_lua_to_csv(input_file, output_file)
+            output_file = os.path.join('output', f'{base}{date_str}.csv')
+            if base in NESTED_CONFIGS:
+                array_key, parent_fields, child_fields, headers = NESTED_CONFIGS[base]
+                process_nested_array_lua_to_csv(input_file, output_file, headers, array_key, parent_fields, child_fields)
             else:
                 header_file = os.path.join('format', f'{base}.csv')
-                output_file = os.path.join('output', f'{base}{date_str}.csv')
                 process_lua_to_csv(input_file, output_file, header_file)
+
